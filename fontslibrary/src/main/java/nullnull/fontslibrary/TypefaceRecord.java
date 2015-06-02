@@ -22,7 +22,7 @@ public final class TypefaceRecord {
     public TypefaceRecord(String name, Typeface typeface, Set<String> otherNames) {
         this.name = name;
         this.typeface = typeface;
-        this.otherNames = otherNames;
+        this.otherNames = Collections.unmodifiableSet(otherNames);
     }
 
     @Override
