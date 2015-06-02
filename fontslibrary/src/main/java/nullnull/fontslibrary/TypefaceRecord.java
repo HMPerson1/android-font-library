@@ -2,6 +2,7 @@ package nullnull.fontslibrary;
 
 import android.graphics.Typeface;
 
+import java.util.Collections;
 import java.util.Formatter;
 import java.util.Set;
 
@@ -9,6 +10,11 @@ import java.util.Set;
  * Stores information about a {@link Typeface}.
  */
 public final class TypefaceRecord {
+    /**
+     * The TypefaceRecord for {@link Typeface#DEFAULT}. This object's
+     * {@link TypefaceRecord#getOtherNames()} may not be complete.
+     */
+    public static final TypefaceRecord DEFAULT = new TypefaceRecord("DEFAULT", Typeface.DEFAULT, Collections.EMPTY_SET);
     private final String name;
     private final Typeface typeface;
     private final Set<String> otherNames;
