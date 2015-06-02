@@ -30,6 +30,8 @@ public class TypefaceUtils {
         }
     };
 
+    private static Set<TypefaceRecord> cache;
+
     /**
      * Utility class -- private constructor
      */
@@ -37,15 +39,17 @@ public class TypefaceUtils {
     }
 
     /**
-     * Get a Set of typefaces installed on this system. You should probably cache the result of
-     * this method if you use it multiple times.
+     * Gets a Set of typefaces installed on this system.
      *
      * @return A Set of TypefaceRecords
      * @throws IllegalAccessException if reflection magic fails
      * @throws NoSuchFieldException   if reflection magic fails
      */
     public static Set<TypefaceRecord> typefaces() throws IllegalAccessException, NoSuchFieldException {
-        return sortRecords(mkRecords(dedupTypefaces(getRawTypefaceList())));
+        if (cache == null) {
+            cache = sortRecords(mkRecords(dedupTypefaces(getRawTypefaceList())));
+        }
+        return cache;
     }
 
     /**
